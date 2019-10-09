@@ -30,4 +30,57 @@ Discounted prices：7.50(yuan)
 
     expect(console.log).toHaveBeenCalledWith(expectText);
   });
+
+  it('should get all the items without count', () => {
+    const expectText = [{
+      barcode: 'ITEM000001',
+      name: 'Sprite',
+      unit: 'bottle',
+      price: 3.00,
+    },{
+      barcode: 'ITEM000005',
+      name: 'Instant Noodles',
+      unit: 'bag',
+      price: 4.50,
+      count: 2
+    }]
+    expect().decodeTags.toBe(expectText);
+  });
+
+  it('should decode all barcodes', () => {
+    const expectText = [{barcode: 'ITEM000001'},{barcode: 'ITEM000001'},{barcode: 'ITEM000005', count: 2 }]
+    expect().decodeBarcodes(expectText);
+  });
+
+  it('should combine all the items', () => {
+    const expectText = [{
+      barcode: 'ITEM000001',
+      name: 'Sprite',
+      unit: 'bottle',
+      price: 3.00,
+    },{
+      barcode: 'ITEM000005',
+      name: 'Instant Noodles',
+      unit: 'bag',
+      price: 4.50,
+      count: 2
+    }]
+    expect().combineItems.toBe(expectText);
+  });
+
+  it('should get all the items without count', () => {
+    const expectText = [{barcode: 'ITEM000001'},{barcode: 'ITEM000001'}]
+    expect().loadItems.toBe(expectText);
+  });
+
+
+
 });
+
+
+
+
+
+
+
+
